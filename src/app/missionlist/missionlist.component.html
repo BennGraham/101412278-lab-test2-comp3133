@@ -1,1 +1,42 @@
-<p>missionlist works!</p>
+<div class="mission-card" *ngFor="let mission of missions">
+  <img
+    [src]="mission.links.mission_patch_small"
+    [alt]="mission.mission_name"
+    class="mission-patch"
+  />
+
+  <div class="mission-info">
+    <h2>{{ mission.mission_name }}</h2>
+    <div class="mission-details">
+      <p>Flight Number: {{ mission.flight_number }}</p>
+      <p>Launch Year: {{ mission.launch_year }}</p>
+      <p>
+        Rocket: {{ mission.rocket.rocket_name }} ({{
+          mission.rocket.rocket_type
+        }})
+      </p>
+      <p>{{ mission.details }}</p>
+
+      <div class="mission-links">
+        <a
+          [href]="mission.links.article_link"
+          target="_blank"
+          *ngIf="mission.links.article_link"
+          >Article</a
+        >
+        <a
+          [href]="mission.links.wikipedia"
+          target="_blank"
+          *ngIf="mission.links.wikipedia"
+          >Wikipedia</a
+        >
+        <a
+          [href]="mission.links.video_link"
+          target="_blank"
+          *ngIf="mission.links.video_link"
+          >Video</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
