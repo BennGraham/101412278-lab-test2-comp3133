@@ -1,0 +1,59 @@
+<div
+  class="mission-details-modal"
+  *ngIf="isVisible && mission"
+  (click)="hideModal()"
+>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="hideModal()">X</button>
+
+    <div class="mission-header">
+      <img
+        [src]="mission.links.mission_patch_small"
+        [alt]="mission.mission_name"
+        class="mission-patch"
+      />
+      <h2>{{ mission.mission_name }}</h2>
+    </div>
+
+    <div class="mission-info">
+      <p><strong>Flight Number:</strong> {{ mission.flight_number }}</p>
+      <p><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
+      <p>
+        <b>Rocket:</b> {{ mission.rocket.rocket_name }} ({{
+          mission.rocket.rocket_type
+        }})
+      </p>
+      <p>
+        <strong>Details:</strong>
+        {{ mission.details || "No details available" }}
+      </p>
+    </div>
+
+    <div class="mission-links">
+      <a
+        [href]="mission.links.article_link"
+        target="_blank"
+        *ngIf="mission.links.article_link"
+        class="link-button"
+      >
+        Read Article
+      </a>
+      <a
+        [href]="mission.links.wikipedia"
+        target="_blank"
+        *ngIf="mission.links.wikipedia"
+        class="link-button"
+      >
+        Wikipedia
+      </a>
+      <a
+        [href]="mission.links.video_link"
+        target="_blank"
+        *ngIf="mission.links.video_link"
+        class="link-button"
+      >
+        Watch Video
+      </a>
+    </div>
+  </div>
+</div>

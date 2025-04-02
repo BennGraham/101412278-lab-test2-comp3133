@@ -6,7 +6,11 @@
   </select>
 </div>
 
-<div class="mission-card" *ngFor="let mission of missions">
+<div
+  class="mission-card"
+  *ngFor="let mission of missions"
+  (click)="showMissionDetails(mission)"
+>
   <img
     [src]="mission.links.mission_patch_small"
     [alt]="mission.mission_name"
@@ -48,3 +52,10 @@
     </div>
   </div>
 </div>
+
+<app-missiondetails
+  [mission]="selectedMission"
+  [isVisible]="showDetails"
+  (hide)="hideModal()"
+>
+</app-missiondetails>
