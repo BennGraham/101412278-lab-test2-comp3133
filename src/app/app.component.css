@@ -13,21 +13,31 @@
 
 .page-header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 0 1rem;
+  padding: 0 1rem 1rem;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
 }
 
 .page-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1a237e;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.5px;
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 0;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, darkblue 0%, cyan 100%);
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
 }
 
 .page-header p {
   font-size: 1.1rem;
-  color: #5c6bc0;
+  color: lightgray;
   max-width: 600px;
   margin: 0 auto;
 }
