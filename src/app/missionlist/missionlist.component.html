@@ -1,44 +1,49 @@
 <div class="filter-section">
-  <label for="yearSelect">Filter Missions by Year:</label>
-  <select id="yearSelect" (change)="onYearChange($event)" class="year-select">
-    <option value="">All Years</option>
-    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-  </select>
+  <mat-form-field appearance="outline">
+    <mat-label>Filter Missions by Year</mat-label>
+    <mat-select (selectionChange)="onYearChange($event)">
+      <mat-option value="">All Years</mat-option>
+      <mat-option *ngFor="let year of years" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
-
-<mat-grid-list
-  class="grid-list"
-  [cols]="numCols"
-  rowHeight="12rem"
-  (window:resize)="onResize($event)"
-  gutterSize="16px"
->
-  <mat-grid-tile class="grid-tile" *ngFor="let mission of missions">
-    <mat-card
-      class="mission-card"
-      (click)="showMissionDetails(mission)"
-      [style.background-image]="
-        'url(' + mission.links.mission_patch_small + ')'
-      "
-    >
-      <div
-        class="status-indicator"
-        [class.success]="mission.launch_success"
-        [class.failure]="!mission.launch_success"
+<div class="grid-container">
+  <mat-grid-list
+    class="grid-list"
+    [cols]="numCols"
+    rowHeight="12rem"
+    (window:resize)="onResize($event)"
+    gutterSize="16px"
+  >
+    <mat-grid-tile class="grid-tile" *ngFor="let mission of missions">
+      <mat-card
+        class="mission-card"
+        (click)="showMissionDetails(mission)"
+        [style.background-image]="
+          'url(' + mission.links.mission_patch_small + ')'
+        "
       >
-        <mat-icon>{{
-          mission.launch_success ? "check_circle" : "error"
-        }}</mat-icon>
-      </div>
+        <div
+          class="status-indicator"
+          [class.success]="mission.launch_success"
+          [class.failure]="!mission.launch_success"
+        >
+          <mat-icon>{{
+            mission.launch_success ? "check_circle" : "error"
+          }}</mat-icon>
+        </div>
 
-      <div class="card-content">
-        <h2 class="mission-title">{{ mission.mission_name }}</h2>
-        <p class="mission-year">{{ mission.launch_year }}</p>
-        <p class="rocket-name">{{ mission.rocket.rocket_name }}</p>
-      </div>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+        <div class="card-content">
+          <h2 class="mission-title">{{ mission.mission_name }}</h2>
+          <p class="mission-year">{{ mission.launch_year }}</p>
+          <p class="rocket-name">{{ mission.rocket.rocket_name }}</p>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
 
 <app-missiondetails
   [mission]="selectedMission"

@@ -6,6 +6,10 @@ import { MissiondetailsComponent } from '../missiondetails/missiondetails.compon
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectChange } from '@angular/material/select';
+
 @Component({
   selector: 'app-missionlist',
   standalone: true,
@@ -15,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatGridListModule,
     MatCardModule,
     MatIconModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   templateUrl: './missionlist.component.html',
   styleUrls: ['./missionlist.component.css'],
@@ -49,8 +55,8 @@ export class MissionListComponent implements OnInit {
     this.loadMissions();
   }
 
-  onYearChange(event: Event): void {
-    const year = (event.target as HTMLSelectElement).value;
+  onYearChange(event: MatSelectChange): void {
+    const year = event.value;
     this.loading = true;
     this.error = null;
     this.loadMissions(year);

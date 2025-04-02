@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    lightgray 0%,
+    lightskyblue 50%,
+    darkblue 100%
+  );
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: #5c6bc0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+}
