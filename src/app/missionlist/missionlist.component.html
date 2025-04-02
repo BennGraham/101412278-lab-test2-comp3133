@@ -7,12 +7,13 @@
 </div>
 
 <mat-grid-list
+  class="grid-list"
   [cols]="numCols"
-  rowHeight="13rem"
+  rowHeight="12rem"
   (window:resize)="onResize($event)"
   gutterSize="16px"
 >
-  <mat-grid-tile *ngFor="let mission of missions">
+  <mat-grid-tile class="grid-tile" *ngFor="let mission of missions">
     <mat-card
       class="mission-card"
       (click)="showMissionDetails(mission)"

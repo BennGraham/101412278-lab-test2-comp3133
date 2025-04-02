@@ -1,6 +1,13 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  padding: 2rem;
+}
+
 .mission-card {
   position: relative;
-  width: 95%;
+  width: 100%;
   height: 12rem;
   margin: 0;
   padding: 0;
@@ -15,6 +22,21 @@
   justify-content: flex-end;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.grid-list {
+  margin: 0;
+  padding: 1rem;
+}
+
+.grid-tile {
+  background-color: lightcoral;
+  border-radius: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.mission-card:hover .grid-tile {
+  transform: scale(1.05);
 }
 
 .mission-card::before {
@@ -98,22 +120,46 @@
 }
 
 .filter-section {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c3e50;
 }
 
 .year-select {
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
-  border: 1px solid #ccc;
-  font-size: 1em;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  background-color: white;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+.year-select:hover {
+  border-color: #cbd5e0;
+}
+
+.year-select:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
 }
 
 .mission-card:hover {
-  transform: translateY(-0.25rem);
+  transform: scale(1.02);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
 }
 
