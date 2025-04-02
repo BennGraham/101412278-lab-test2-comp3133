@@ -1,3 +1,11 @@
+<div class="filter-section">
+  <label for="yearSelect">Filter Missions by Year:</label>
+  <select id="yearSelect" (change)="onYearChange($event)" class="year-select">
+    <option value="">All Years</option>
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+</div>
+
 <div class="mission-card" *ngFor="let mission of missions">
   <img
     [src]="mission.links.mission_patch_small"

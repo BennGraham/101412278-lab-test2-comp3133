@@ -36,3 +36,20 @@ p {
   display: flex;
   gap: 1rem;
 }
+
+.filter-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.year-select {
+  margin-left: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ddd;
+}
+
+label {
+  font-weight: bold;
+}

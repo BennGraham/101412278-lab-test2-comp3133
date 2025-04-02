@@ -14,11 +14,28 @@ export class MissionListComponent implements OnInit {
   missions: Mission[] = [];
   loading = true;
   error: string | null = null;
+  yearOptions = new Date().getFullYear() - 2005;
+
+  years: number[] = Array.from(
+    { length: this.yearOptions },
+    (_, i) => 2005 + 1 + i,
+  ).reverse();
 
   constructor(private spacexService: SpacexapiService) {}
 
   ngOnInit(): void {
-    this.spacexService.getMissions().subscribe((data: any) => {
+    this.loadMissions();
+  }
+
+  onYearChange(event: Event): void {
+    const year = (event.target as HTMLSelectElement).value;
+    this.loading = true;
+    this.error = null;
+    this.loadMissions(year);
+  }
+
+  private loadMissions(year?: string): void {
+    this.spacexService.getMissions(year).subscribe((data: any) => {
       console.log(data);
       this.missions = data;
     });
