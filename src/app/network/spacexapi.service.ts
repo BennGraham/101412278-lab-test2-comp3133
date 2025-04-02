@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 import { Mission } from "../models/mission";
@@ -12,9 +16,13 @@ export class SpacexapiService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getMissions(): Observable<Mission[]> {
+  public getMissions(year?: string): Observable<Mission[]> {
+    let params = new HttpParams();
+    if (year) {
+      params = params.append("launch_year", year);
+    }
     return this.httpClient
-      .get<Mission[]>(this.REST_API_SERVER)
+      .get<Mission[]>(this.REST_API_SERVER, { params })
       .pipe(retry(3), catchError(this.handleError));
   }
 
