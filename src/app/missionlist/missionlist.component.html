@@ -6,52 +6,38 @@
   </select>
 </div>
 
-<div
-  class="mission-card"
-  *ngFor="let mission of missions"
-  (click)="showMissionDetails(mission)"
+<mat-grid-list
+  [cols]="numCols"
+  rowHeight="13rem"
+  (window:resize)="onResize($event)"
+  gutterSize="16px"
 >
-  <img
-    [src]="mission.links.mission_patch_small"
-    [alt]="mission.mission_name"
-    class="mission-patch"
-  />
-
-  <div class="mission-info">
-    <h2>{{ mission.mission_name }}</h2>
-    <div class="mission-details">
-      <p>Flight Number: {{ mission.flight_number }}</p>
-      <p>Launch Year: {{ mission.launch_year }}</p>
-      <p>
-        Rocket: {{ mission.rocket.rocket_name }} ({{
-          mission.rocket.rocket_type
-        }})
-      </p>
-      <p>{{ mission.details }}</p>
-
-      <div class="mission-links">
-        <a
-          [href]="mission.links.article_link"
-          target="_blank"
-          *ngIf="mission.links.article_link"
-          >Article</a
-        >
-        <a
-          [href]="mission.links.wikipedia"
-          target="_blank"
-          *ngIf="mission.links.wikipedia"
-          >Wikipedia</a
-        >
-        <a
-          [href]="mission.links.video_link"
-          target="_blank"
-          *ngIf="mission.links.video_link"
-          >Video</a
-        >
+  <mat-grid-tile *ngFor="let mission of missions">
+    <mat-card
+      class="mission-card"
+      (click)="showMissionDetails(mission)"
+      [style.background-image]="
+        'url(' + mission.links.mission_patch_small + ')'
+      "
+    >
+      <div
+        class="status-indicator"
+        [class.success]="mission.launch_success"
+        [class.failure]="!mission.launch_success"
+      >
+        <mat-icon>{{
+          mission.launch_success ? "check_circle" : "error"
+        }}</mat-icon>
       </div>
-    </div>
-  </div>
-</div>
+
+      <div class="card-content">
+        <h2 class="mission-title">{{ mission.mission_name }}</h2>
+        <p class="mission-year">{{ mission.launch_year }}</p>
+        <p class="rocket-name">{{ mission.rocket.rocket_name }}</p>
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <app-missiondetails
   [mission]="selectedMission"

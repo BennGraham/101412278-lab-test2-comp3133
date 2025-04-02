@@ -3,6 +3,7 @@ export interface Mission {
   mission_name: string;
   launch_year: string;
   details: string | null;
+  launch_success: boolean;
   rocket: {
     rocket_name: string;
     rocket_type: string;

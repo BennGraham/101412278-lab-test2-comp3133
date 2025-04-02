@@ -1,55 +1,149 @@
-root {
-  line-height: 1.5;
-}
-
-p {
-  margin: 0.1rem;
-}
-
 .mission-card {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1rem;
-  border-radius: 10px;
-  background-color: #00000050;
-  border: 2px solid black;
-  padding: 1rem;
-  margin: 0.5rem auto;
-}
-
-.mission-details {
+  position: relative;
+  width: 95%;
+  height: 12rem;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-size: 45%;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-color: #1a1a1a;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid black;
-  background: #00000010;
+  justify-content: flex-end;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.mission-details:hover {
-  scale: 1.02;
-  transition: scale 0.3s ease-in-out 0s;
+.mission-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 1;
 }
 
-.mission-links {
-  margin-top: 1rem;
+.status-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 3;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.status-indicator mat-icon {
+  font-size: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-indicator.success mat-icon {
+  color: green;
+}
+
+.status-indicator.failure mat-icon {
+  color: red;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 16px;
+  width: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.mission-title {
+  color: white;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  line-height: 1.2;
+}
+
+.mission-year {
+  color: #e0e0e0;
+  font-size: 1.1em;
+  margin: 0 0 4px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.rocket-name {
+  color: #bdbdbd;
+  font-size: 0.9em;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .filter-section {
-  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .year-select {
-  margin-left: 0.75rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
+  font-size: 1em;
 }
 
-label {
-  font-weight: bold;
+.mission-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .mission-card {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .mission-title {
+    font-size: 1.2em;
+  }
+
+  .mission-year {
+    font-size: 1em;
+  }
+
+  .rocket-name {
+    font-size: 0.85em;
+  }
+
+  .status-indicator {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mission-card {
+    width: 10rem;
+    height: 10rem;
+  }
 }
